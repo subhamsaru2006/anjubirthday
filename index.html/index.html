@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Anjali ❤️</title>
+    <link rel="stylesheet" href="anju.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <audio id="bg-music" src="assets/music.mp3" loop></audio>
+    <audio id="pop-sound" src="assets/pop.mp3"></audio>
+
+    <div id="sparkle-container"></div>
+
+    <section id="scene-entry" class="scene active">
+        <div class="stars-bg"></div>
+        <h1 class="glowing-text pulse cursor-pointer" onclick="startExperience()">Tap to open your surprise 🎁</h1>
+    </section>
+
+    <section id="scene-gift" class="scene hidden">
+        <div class="glass-panel">
+            <h2>For You...</h2>
+            <div class="gift-box" onclick="openGift()">
+                <div class="gift-lid"></div>
+                <div class="gift-body"></div>
+                <div class="gift-ribbon-vertical"></div>
+                <div class="gift-ribbon-horizontal"></div>
+            </div>
+            <p class="hint">Tap the box to open</p>
+        </div>
+    </section>
+
+    <section id="scene-message" class="scene hidden">
+        <h1 id="bday-text" class="glowing-text title-large"></h1>
+        <div id="hearts-container"></div>
+        <button class="glass-btn mt-2" onclick="nextScene('scene-message', 'scene-cake')">Continue</button>
+    </section>
+
+    <section id="scene-cake" class="scene hidden">
+        <div class="glass-panel">
+            <h2 id="cake-instruction">Blow out the candles! (Tap them)</h2>
+            <div class="cake-container">
+                <div class="cake left-half"></div>
+                <div class="cake right-half"></div>
+                <div class="candles">
+                    <div class="candle" onclick="blowCandle(this)">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle" onclick="blowCandle(this)">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle" onclick="blowCandle(this)">
+                        <div class="flame"></div>
+                    </div>
+                </div>
+                <div class="knife hidden" id="knife"></div>
+            </div>
+            <button id="cut-btn" class="glass-btn hidden" onclick="cutCake()">Cut the Cake 🔪</button>
+            <button id="next-gallery-btn" class="glass-btn hidden mt-2" onclick="nextScene('scene-cake', 'scene-gallery')">See Memories</button>
+        </div>
+    </section>
+
+    <section id="scene-gallery" class="scene hidden">
+        <h2 class="glowing-text mb-2">Beautiful Memories</h2>
+        <div class="gallery-container">
+            <div class="polaroid"><img src="https://images.unsplash.com/photo-1517404215738-15263e9f9178?w=400" alt="Memory 1"><div class="caption">Smile!</div></div>
+            <div class="polaroid"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400" alt="Memory 2"><div class="caption">Perfect</div></div>
+            <div class="polaroid"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400" alt="Memory 3"><div class="caption">Magical</div></div>
+        </div>
+        <button class="glass-btn mt-2" onclick="initBalloonGame()">Let's Play a Game</button>
+    </section>
+
+    <section id="scene-game" class="scene hidden">
+        <h2 class="glowing-text" id="game-title">Pop the Balloons!</h2>
+        <div id="balloon-container"></div>
+        <div id="pop-message" class="floating-message hidden"></div>
+        <button id="finish-game-btn" class="glass-btn hidden" style="position:absolute; bottom: 10%; z-index: 100;" onclick="nextScene('scene-game', 'scene-final')">Final Surprise</button>
+    </section>
+
+    <section id="scene-final" class="scene hidden">
+        <div class="fireworks-bg"></div>
+        <h1 class="glowing-text title-large fade-in-text">This world is brighter because you exist.</h1>
+        <button class="glass-btn mt-2" onclick="showEnding()">Finish</button>
+    </section>
+
+    <section id="scene-ending" class="scene hidden">
+        <div id="lantern-container"></div>
+        <h1 class="glowing-text title-huge pulse">Once again,<br>Happy Birthday Anjali ❤️</h1>
+    </section>
+
+    <script src="anju.js"></script>
+</body>
+</html>
